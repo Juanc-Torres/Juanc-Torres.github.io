@@ -1,0 +1,35 @@
+{
+  "profileImage": "/images/jc.jpg",
+  "profileAlt": "Foto de Juan Carlos Torres",
+  "profileLink": "/#home",
+  "profileTitle": "Full Stack Web Developer",
+  "profileName": "Juan Carlos Torres",
+
+  "github": "https://github.com/Juanc-Torres",
+  "linkedin": "https://www.linkedin.com/in/jc-torres-rodriguez/",
+  "email": "jc.torres.rodriguez00@gmail.com",
+
+  "alias": "Juanc-Torres",
+
+  "portfolioImage": "/images/portfolio.webp",
+
+  "contactSectionTitle": "¿Tienes alguna pregunta?",
+  "contactSectionSubtitle": "No dudes en hablarme",
+  "contactSectionButtonText": "Contactar",
+  "contactSectionButtonIcon": "paperplane",
+
+  "techsTitle": "Tecnologías",
+
+  "githubIconName": "github",
+  "linkedinIconName": "linkedin",
+  "emailIconName": "envelope",
+
+  "hobbies": [
+    "Senderismo",
+    "Buceo",
+    "Ajedrez",
+    "Cine",
+    "Viajar",
+    "Podcast"
+  ]
+}

@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Experience from "../components/portfolio/Experience.astro";
+import HeroIndex from "../components/portfolio/HeroIndex.astro";
+import Contact from "../components/portfolio/Contact.astro";
+import ListProjects from "../components/portfolio/ListProjects.astro";
+import Studies from "../components/portfolio/Studies.astro";
+---
+
+<Layout
+  pageTitle="Juan Carlos Torres | Full Stack Developer"
+  description="Portfolio de Juan Carlos Torres, desarrollador Full Stack especializado en React, Node.js y desarrollo web moderno."
+  ogimage={{
+    alt: "Portfolio de Juan Carlos Torres",
+    url: "/images/imagedefault.webp"
+  }}
+>
+    <HeroIndex />
+    <Experience />
+    <ListProjects />
+    <Studies />
+    <Contact />
+    </Layout>

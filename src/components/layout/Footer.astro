@@ -1,0 +1,66 @@
+---
+import Social from "../ui/Social.astro";
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const [staticData] = await getCollection("staticData");
+const {
+  github,
+  alias,
+  email,
+  linkedin,
+  emailIconName,
+  linkedinIconName,
+  githubIconName,
+} = staticData.data;
+---
+
+<footer
+  class="relative bottom-0 w-full px-4 py-8 font-medium text-blacktext dark:bg-transparent dark:border-b-2 dark:border-zinc-800 dark:text-zinc-300 max-lg:mt-3"
+  role="contentinfo"
+  aria-label="Footer"
+>
+  <nav
+    class="mx-auto flex max-w-7xl flex-row items-center justify-between gap-4 text-xl max-xl:px-6 max-sm:flex-col"
+    aria-label="Footer navigation"
+  >
+    <!-- Texto central -->
+    <div class="text-center">
+      <a
+        href={github}
+        class="flex items-center justify-center gap-3 text-base font-normal italic max-sm:text-sm"
+        aria-label="Repositorio del portfolio"
+      >
+        <Icon name="code" aria-hidden="true" />
+        Desarrollado por <strong>Juan Carlos Torres</strong>
+      </a>
+    </div>
+
+    <!-- Redes sociales -->
+    <div
+      class="flex items-center justify-center gap-5"
+      role="group"
+      aria-label="Enlaces sociales"
+    >
+      <Social
+      link={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(
+        "Contacto desde tu portfolio"
+      )}&body=${encodeURIComponent("Hola Juan Carlos,\n\nTe contacto por\n")}`}
+      iconName={emailIconName}
+      label={`Enviar email a ${email}`}
+    />
+
+      <Social
+        link={github}
+        iconName={githubIconName}
+        label={`Visitar ${alias} en GitHub`}
+      />
+
+      <Social
+        link={linkedin}
+        iconName={linkedinIconName}
+        label={`Visitar ${alias} en LinkedIn`}
+      />
+    </div>
+  </nav>
+</footer>

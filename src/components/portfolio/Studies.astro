@@ -1,0 +1,124 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import Heading from "../ui/Heading.astro";
+import { Icon } from "astro-icon/components";
+
+const EDUCATION = [
+  {
+    date: "2026",
+    title: "Full Stack Web Development Bootcamp",
+    company: "Socratech School",
+    description:
+      "Bootcamp intensivo de desarrollo web Full Stack centrado en React, Node.js, Express y MySQL. Desarrollo de aplicaciones completas, trabajo en equipo, control de versiones con GitHub y metodologías ágiles.",
+  },
+  {
+    date: "2023 - Actualidad",
+    title: "FP II Desarrollo de Aplicaciones Multiplataforma (DAM)",
+    company: "Instituto Bilingüe Rafael Alberti",
+    description:
+      "Formación en desarrollo de software, bases de datos, programación orientada a objetos y arquitectura de aplicaciones.",
+  },
+  {
+    date: "2021",
+    title: "FP I Sistemas Microinformáticos y Redes (SMR)",
+    company: "Instituto Bilingüe Rafael Alberti",
+    description:
+      "Formación en sistemas informáticos, redes, administración de equipos, seguridad básica y soporte técnico.",
+  },
+];
+
+const CERTIFICATIONS = [
+  {
+    date: "2026",
+    title: "Generative AI: Prompt Engineering",
+    company: "IBM",
+    description:
+      "Curso centrado en el uso de inteligencia artificial generativa y técnicas de prompt engineering para optimizar resultados en modelos de lenguaje.",
+  },
+  {
+    date: "2026",
+    title: "Pentesting en aplicaciones web",
+    company: "Udemy",
+    description:
+      "Formación en análisis de vulnerabilidades web, testing de seguridad y conceptos de hacking ético aplicados a aplicaciones web.",
+  },
+  {
+    date: "2026",
+    title: "Power BI",
+    company: "Santander Open Academy",
+    description:
+      "Curso sobre análisis de datos, visualización y creación de dashboards interactivos utilizando Power BI.",
+  },
+  {
+    date: "2025",
+    title: "MOOC en Ciberseguridad",
+    company: "Universidad de Málaga – INCIBE",
+    description:
+      "Curso sobre fundamentos de ciberseguridad, buenas prácticas de seguridad digital y protección de sistemas.",
+  },
+  {
+    date: "2025",
+    title: "GitHub Foundations Certification",
+    company: "Udemy",
+    description:
+      "Formación en control de versiones con Git y GitHub, flujos de trabajo colaborativos y buenas prácticas en desarrollo de software.",
+  },
+];
+---
+
+<section class="py-8 px-8 max-md:py-4 mb-4 scroll-m-16" id="studies">
+  <div class="flex flex-col pt-8 max-w-4xl mx-auto">
+    <div class="flex gap-4 items-center justify-center">
+      <Icon class="text-3xl dark:text-white text-blacktext" name="person" />
+      <Heading text="Estudios" textGradient="y Certificaciones" level={2} />
+    </div>
+
+    <!-- EDUCACIÓN -->
+    <div class="relative max-md:mt-0 mt-8" aria-label="Education">
+      <h3 class="text-xl font-bold text-blacktext dark:text-white mb-4">
+        Estudios
+      </h3>
+
+      <ol class="relative mt-6">
+        {
+          EDUCATION.map((study, index) => (
+            <li>
+              <article role="article" aria-labelledby={`education-title-${index}`}>
+                <div
+                  class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
+                  aria-describedby={`education-title-${index}`}
+                >
+                  <ExperienceItem {...study} />
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+ 
+    <div class="relative mt-14" aria-label="Certifications">
+      <h3 class="text-xl font-bold text-blacktext dark:text-white mb-4">
+        Certificaciones
+      </h3>
+
+      <ol class="relative mt-6">
+        {
+          CERTIFICATIONS.map((cert, index) => (
+            <li>
+              <article role="article" aria-labelledby={`cert-title-${index}`}>
+                <div
+                  class="flex flex-col gap-2 text-zinc-00 dark:text-zinc-300 md:col-span-3"
+                  aria-describedby={`cert-title-${index}`}
+                >
+                  <ExperienceItem {...cert} />
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+import Social from "./Social.astro";
+import { getCollection } from "astro:content";
+
+const [staticData] = await getCollection("staticData");
+const { email, linkedin, emailIconName, linkedinIconName } = staticData.data;
+---
+
+<dialog
+  id="contact-modal"
+  class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 m-0 p-0 rounded-2xl w-[min(520px,92vw)]
+         bg-transparent border-0 outline-none"
+>
+  <div class="modal-panel p-6 dark:bg-[#0E0E11] bg-white text-blacktext dark:text-zinc-200 rounded-2xl">
+    <div class="flex items-start justify-between gap-4">
+      <h3 class="text-2xl font-bold">¿Cómo prefieres contactarme?</h3>
+      <button
+        type="button"
+        class="text-xl opacity-70 hover:opacity-100"
+        data-close-modal
+        aria-label="Cerrar"
+      >
+        ✕
+      </button>
+    </div>
+
+    <p class="mt-2 opacity-80">Elige un canal y te respondo lo antes posible.</p>
+
+    <div class="mt-6 flex flex-col gap-4">
+      <!-- Email -->
+      <div class="flex items-center justify-between gap-4 border dark:border-zinc-800 border-zinc-200 rounded-xl p-4">
+        <div class="flex items-center gap-3">
+          <Social link={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`} iconName={emailIconName} label={`Enviar email a ${email}`} />
+          <span class="font-semibold">Correo</span>
+        </div>
+        <a
+        class="px-4 py-2 rounded-full font-semibold text-white bg-mint-500 hover:bg-mint-600 transition-all"
+        href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Abrir Correo
+      </a>
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="flex items-center justify-between gap-4 border dark:border-zinc-800 border-zinc-200 rounded-xl p-4">
+        <div class="flex items-center gap-3">
+          <Social link={linkedin} iconName={linkedinIconName} label="Abrir LinkedIn" />
+          <span class="font-semibold">LinkedIn</span>
+        </div>
+        <a
+          class="px-4 py-2 rounded-full font-semibold text-white bg-mint-500 hover:bg-mint-600 transition-all"
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("contact-modal");
+  const closeBtn = dialog?.querySelector("[data-close-modal]");
+
+  closeBtn?.addEventListener("click", () => dialog.close());
+
+  dialog?.addEventListener("click", (e) => {
+    const rect = dialog.getBoundingClientRect();
+    const clickedOutside =
+      e.clientX < rect.left ||
+      e.clientX > rect.right ||
+      e.clientY < rect.top ||
+      e.clientY > rect.bottom;
+
+    if (clickedOutside) dialog.close();
+  });
+</script>
