@@ -22,7 +22,7 @@ image:
 - Vite
 - Css
 - HTML
-- Git Hug/Git
+- Git Hub/Git
 
 ## Objetivo
 
