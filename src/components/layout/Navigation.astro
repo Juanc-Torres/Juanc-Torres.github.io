@@ -5,11 +5,14 @@ import { getCollection } from "astro:content";
 const [staticData] = await getCollection("staticData");
 const { github, githubIconName, linkedin, linkedinIconName } = staticData.data;
 
+type MenuLink = { name: string; path: string };
+type MenuItem = MenuLink | (MenuLink & { dropdown: MenuLink[] });
+
 const { items = [] }: { items: (keyof typeof menu)[] } = Astro.props as {
   items: (keyof typeof menu)[];
 };
 
-const menu = {
+const menu: Record<string, MenuItem> = {
   home: { name: "Home", path: "/#home" },
   experience: { name: "Experiencia", path: "/#experience" },
   projects: { name: "Proyectos", path: "/#projects" },
@@ -44,6 +47,10 @@ const baseClasses = {
       inactive: ["dark:text-zinc-300", "text-blacktext"],
     };
 
+    /**
+     * @param {HTMLAnchorElement} link
+     * @param {boolean} isActive
+     */
     function toggleLinkClasses(link, isActive) {
       if (isActive) {
         link.classList.add(...linkClasses.active);
@@ -66,7 +73,7 @@ const baseClasses = {
         const path = link.getAttribute("data-path");
         if (!path) return;
 
-        toggleLinkClasses(link, path === currentPath || path === currentHash);
+        toggleLinkClasses(/** @type {HTMLAnchorElement} */ (link), path === currentPath || path === currentHash);
       });
     }
 
@@ -92,7 +99,7 @@ const baseClasses = {
                 const path = link.getAttribute("data-path");
                 if (!path) return;
 
-                toggleLinkClasses(link, path === `/#${sectionId}`);
+                toggleLinkClasses(/** @type {HTMLAnchorElement} */ (link), path === `/#${sectionId}`);
               });
             }
           }
@@ -114,7 +121,7 @@ const baseClasses = {
       const item = menu[key as keyof typeof menu];
       if (!item) return null;
 
-      if ("dropdown" in item) {
+      if ("dropdown" in item && Array.isArray(item.dropdown)) {
         return (
           <div class={baseClasses.dropdown}>
             <a

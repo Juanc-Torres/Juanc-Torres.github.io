@@ -5,6 +5,25 @@ import { Icon } from "astro-icon/components";
 
 const allPosts = await Astro.glob("../../pages/portfolio/projects/*.md");
 
+const getProjectUrl = (post: {
+  url?: string;
+  file?: string;
+}) => {
+  const fileName = post.file?.split(/[\\/]/).pop();
+  const slug = fileName?.replace(/\.md$/i, "");
+
+  // Build the public route directly from filename to avoid src/pages paths.
+  if (slug) {
+    return `/portfolio/projects/${encodeURIComponent(slug)}`;
+  }
+
+  if (post.url?.startsWith("/")) {
+    return post.url;
+  }
+
+  return post.url ? `/${post.url}` : "/portfolio/projects";
+};
+
 allPosts.sort(
   (a, b) =>
     new Date(b.frontmatter.pubDate).getTime() -
@@ -48,7 +67,7 @@ allPosts.sort(
     {
       allPosts.map((post) => (
         <Project
-          url={post.url}
+          url={getProjectUrl(post)}
           title={post.frontmatter.title}
           description={post.frontmatter.description}
           date={post.frontmatter.pubDate}
