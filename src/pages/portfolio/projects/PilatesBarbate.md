@@ -2,6 +2,7 @@
 layout: /src/layouts/ProjectLayout.astro
 title: "Pilates Barbate"
 pubDate: 2026-08-22
+category: web
 description: "Página web para el estudio de Pilates Barbate"
 languages: ["astro", "typescript", "javascript", "html", "css", "tailwindcss", "postcss", "node.js"]
 

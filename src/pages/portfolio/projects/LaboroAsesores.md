@@ -2,6 +2,7 @@
 layout: /src/layouts/ProjectLayout.astro
 title: "Laboro Asesores"
 pubDate: 2026-06-22
+category: web
 description: "Proyecto para asesores laborales"
 languages: ["html", "css", "javascript", react, vite, node ]
 

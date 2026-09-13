@@ -25,6 +25,10 @@ export const languages: Record<string, Language> = {
     name: "HTML 5",
     iconName: "html",
   },
+  html5: {
+    name: "HTML 5",
+    iconName: "html",
+  },
   javascript: {
     name: "JavaScript",
     iconName: "javascript",
@@ -46,7 +50,15 @@ export const languages: Record<string, Language> = {
     name: "Node.js",
     iconName: "node",
   },
+  "node.js": {
+    name: "Node.js",
+    iconName: "node",
+  },
   tailwind: {
+    name: "Tailwind CSS",
+    iconName: "tailwind",
+  },
+  tailwindcss: {
     name: "Tailwind CSS",
     iconName: "tailwind",
   },
@@ -71,6 +83,10 @@ export const languages: Record<string, Language> = {
     iconName: "sass",
   },
   ts: {
+    name: "TypeScript",
+    iconName: "typescript",
+  },
+  typescript: {
     name: "TypeScript",
     iconName: "typescript",
   },
@@ -114,6 +130,42 @@ export const languages: Record<string, Language> = {
     name: "Python",
     iconName: "python",
   },
+  opencv: {
+    name: "OpenCV",
+    iconName: "code",
+  },
+  ultralytics: {
+    name: "Ultralytics",
+    iconName: "code",
+  },
+  yolo: {
+    name: "YOLO",
+    iconName: "code",
+  },
+  pytorch: {
+    name: "PyTorch",
+    iconName: "code",
+  },
+  numpy: {
+    name: "NumPy",
+    iconName: "code",
+  },
+  cvat: {
+    name: "CVAT",
+    iconName: "code",
+  },
+  "computer vision": {
+    name: "Computer Vision",
+    iconName: "code",
+  },
+  "machine learning": {
+    name: "Machine Learning",
+    iconName: "code",
+  },
+  postcss: {
+    name: "PostCSS",
+    iconName: "code",
+  },
   react: {
     name: "React",
     iconName: "react",
@@ -151,5 +203,11 @@ export const languages: Record<string, Language> = {
 };
 
 export const getLanguage = (lang: string): Language => {
-  return languages[lang] || languages.html;
-}; 
+  const normalizedLang = lang.trim().toLowerCase();
+  return (
+    languages[normalizedLang] || {
+      name: lang,
+      iconName: "code",
+    }
+  );
+};

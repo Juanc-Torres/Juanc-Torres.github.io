@@ -2,6 +2,7 @@
 layout: /src/layouts/ProjectLayout.astro
 title: "Portafolio"
 pubDate: 2026-03-04
+category: web
 description: "Portafolio actual en el que estás con Astro, Tailwind CSS y JavaScript."
 languages: ["astro", "tailwind", "javascript"]
 

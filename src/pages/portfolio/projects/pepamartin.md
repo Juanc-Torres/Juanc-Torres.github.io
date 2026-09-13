@@ -2,6 +2,7 @@
 layout: /src/layouts/ProjectLayout.astro
 title: "bypepamartin"
 pubDate: 2026-03-17
+category: web
 description: "Proyecto de mural para fotógrafa"
 languages: ["html", "css", "javascript", react, vite, node ]
 

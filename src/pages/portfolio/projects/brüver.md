@@ -2,6 +2,7 @@
 layout: /src/layouts/ProjectLayout.astro
 title: "Brüver"
 pubDate: 2026-02-01
+category: web
 description: "Proyecto con crud y organización de citas con React Big Calendar"
 languages: ["html", "css", "javascript", react, vite, mysql, node, bootstrap ]
 

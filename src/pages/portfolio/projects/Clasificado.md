@@ -2,6 +2,7 @@
 layout: /src/layouts/ProjectLayout.astro
 title: "Clasificado"
 pubDate: 2027-04-06
+category: web
 description: "Trabajando en diferentes proyectos..."
 languages: [ ]
 
