@@ -29,9 +29,18 @@ const EDUCATION = [
 
 const CERTIFICATIONS = [
   {
+    date: "septiembre de 2026",
+    title: "Fundamentos de AWS: Cloud, Serverless y Operación",
+    company: "Commit Academy",
+    certificateImage: "/images/certificaciones/FuncamentosAWS.jpg",
+    description:
+      "Curso sobre fundamentos de AWS, arquitectura serverless y operación de servicios en la nube.",
+  },
+  {
     date: "2026",
     title: "Certifícate en Udemy AWS Cloud Practitioner Examen CLF-C01",
     company: "Udemy Amazon AWS",
+    certificateImage: "/images/certificaciones/UdemyAmazonAWS.jpg",
     description:
       "Curso práctico para centrarnos en las principales herramientas de Amazon web Services y prepararnos para el examen de certificación AWS Cloud Practitioner (CLF-C01), Ganando soltura en el manejo de la plataforma y sus servicios, así como en la comprensión de conceptos clave de la nube.",
   },
@@ -39,6 +48,7 @@ const CERTIFICATIONS = [
     date: "2026",
     title: "Generative AI: Prompt Engineering",
     company: "IBM",
+    certificateImage: "/images/certificaciones/GenerativeAI.jpg",
     description:
       "Curso centrado en el uso de inteligencia artificial generativa y técnicas de prompt engineering para optimizar resultados en modelos de lenguaje.",
   },
@@ -46,8 +56,17 @@ const CERTIFICATIONS = [
     date: "2026",
     title: "MOOC en Ciberseguridad",
     company: "Universidad de Málaga – INCIBE",
+    certificateImage: "/images/certificaciones/MOOCenCiberseguridad.jpg",
     description:
       "Curso sobre fundamentos de ciberseguridad, buenas prácticas de seguridad digital y protección de sistemas.",
+  },
+  {
+    date: "marzo de 2026",
+    title: "Curso de Desarrollo con IA 2026",
+    company: "BIG school",
+    certificateImage: "/images/certificaciones/iniciacionaldesarrolloconia.jpg",
+    description:
+      "Formación práctica para integrar la inteligencia artificial en el desarrollo de software, manteniendo la calidad, la validación, la seguridad y el control del código.",
   },
   {
     date: "2026",
@@ -60,6 +79,7 @@ const CERTIFICATIONS = [
     date: "2026",
     title: "Power BI",
     company: "Santander Open Academy",
+    certificateImage: "/images/certificaciones/PowerBI.jpg",
     description:
       "Curso sobre análisis de datos, visualización y creación de dashboards interactivos utilizando Power BI.",
   },
@@ -67,6 +87,7 @@ const CERTIFICATIONS = [
     date: "2025",
     title: "GitHub Foundations Certification",
     company: "Udemy",
+    certificateImage: "/images/certificaciones/GitHubFoundations.jpg",
     description:
       "Formación en control de versiones con Git y GitHub, flujos de trabajo colaborativos y buenas prácticas en desarrollo de software.",
   },
@@ -77,13 +98,13 @@ const CERTIFICATIONS = [
   <div class="flex flex-col pt-8 max-w-4xl mx-auto">
     <div class="flex gap-4 items-center justify-center">
       <Icon class="text-3xl dark:text-white text-blacktext" name="person" />
-      <Heading text="Estudios" textGradient="y Certificaciones" level={2} />
+      <Heading text="Estudios" textGradient="y Certificaciones" textEn="Education" textGradientEn="and Certifications" level={2} />
     </div>
 
     <!-- EDUCACIÓN -->
     <div class="relative max-md:mt-0 mt-8" aria-label="Education">
       <h3 class="text-xl font-bold text-blacktext dark:text-white mb-4">
-        Estudios
+        <span data-lang-es="Estudios" data-lang-en="Education">Estudios</span>
       </h3>
 
       <ol class="relative mt-6">
@@ -107,7 +128,7 @@ const CERTIFICATIONS = [
  
     <div class="relative mt-14" aria-label="Certifications">
       <h3 class="text-xl font-bold text-blacktext dark:text-white mb-4">
-        Certificaciones
+        <span data-lang-es="Certificaciones" data-lang-en="Certifications">Certificaciones</span>
       </h3>
 
       <ol class="relative mt-6">

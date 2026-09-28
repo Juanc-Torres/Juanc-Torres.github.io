@@ -2,11 +2,20 @@
 interface Props {
     text?: string;
     textGradient?: string;
+    textEn?: string;
+    textGradientEn?: string;
     level?: 1 | 2 | 3;
     className?: string;
 }
 
-const { text = "", textGradient = "", level = 1, className = "" } = Astro.props;
+const {
+    text = "",
+    textGradient = "",
+    textEn = text,
+    textGradientEn = textGradient,
+    level = 1,
+    className = ""
+} = Astro.props;
 
 const Tag = `h${level}`;
 ---
@@ -20,7 +29,7 @@ const Tag = `h${level}`;
 ]}>
     {text && (
         <>
-            {text}
+            <span data-lang-es={text} data-lang-en={textEn}>{text}</span>
             {textGradient && " "}
         </> 
     )}
@@ -30,6 +39,8 @@ const Tag = `h${level}`;
                 "bg-linear-to-r from-riptide-500 to-mint-400 dark:from-riptide-500 dark:to-mint-500 text-transparent bg-clip-text",
                 level === 1 
             ]}
-        >{textGradient}</b>
+        >
+            <span data-lang-es={textGradient} data-lang-en={textGradientEn}>{textGradient}</span>
+        </b>
     )}
 </Tag> 

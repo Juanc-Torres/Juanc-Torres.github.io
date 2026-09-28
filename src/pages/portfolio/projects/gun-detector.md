@@ -53,3 +53,5 @@ La interfaz visual muestra el estado de riesgo, los FPS, el número de deteccion
 ## Página informativa
 
 👉 [Visitar página informativa](https://subtle-squirrel-3847c8.netlify.app/)
+<br>
+👉 [Visitar vídeo](https://lnkd.in/p/eQydYMtp/)

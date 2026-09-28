@@ -1,17 +1,20 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   title: string;
   company: string;
   description: string;
   link?: string;
+  certificateImage?: string;
   date: string;
 }
 
-const { title, company, description, link, date } = Astro.props;
+const { title, company, description, link, certificateImage, date } = Astro.props;
 ---
 
 <div
-  class="relative mx-12 pb-12 grid md:grid-cols-5 md:gap-10 before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-['']"
+  class="relative z-0 mx-12 pb-12 grid transition-[z-index] duration-0 hover:z-50 focus-within:z-50 md:grid-cols-5 md:gap-10 before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-['']"
 >
   <div class="pb-12 md:col-span-2">
     <div class="sticky top-0">
@@ -28,9 +31,29 @@ const { title, company, description, link, date } = Astro.props;
       <h4 class="text-xl font-semibold text-zinc-600 dark:text-white">
         {company}
       </h4>
-      <time datetime={date} class="text-sm text-zinc-600/80 dark:text-white/80">
+      <time datetime={date} class="block text-sm text-zinc-600/80 dark:text-white/80">
         {date}
       </time>
+      {certificateImage && (
+        <a
+          href={certificateImage}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative z-50 mt-2 flex w-fit items-center gap-1 border-t border-mint-400 pt-1 text-sm font-semibold text-mint-500 transition-colors hover:text-mint-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-mint-400 dark:text-mint-300 dark:hover:text-mint-200"
+          aria-label={`Ver certificado de ${title}`}
+        >
+          <Icon name="info" class="size-4 animate-pulse" aria-hidden="true" />
+          <span>Certificación</span>
+          <span class="pointer-events-none absolute left-0 top-full z-[100] mt-3 w-72 origin-top-left scale-95 rounded-lg border border-mint-300 bg-white p-2 opacity-0 shadow-xl transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus:scale-100 group-focus:opacity-100 dark:border-mint-700 dark:bg-zinc-900 max-sm:w-56">
+            <img
+              src={certificateImage}
+              alt={`Certificado de ${title}`}
+              class="h-auto w-full rounded-md object-contain"
+              loading="lazy"
+            />
+          </span>
+        </a>
+      )}
     </div>
   </div>
   <div

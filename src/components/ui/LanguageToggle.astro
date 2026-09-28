@@ -1,0 +1,61 @@
+<button
+  id="languageToggle"
+  data-language-toggle
+  type="button"
+  class="language-toggle hover:cursor-pointer hover:text-mint-400 transition-all"
+  aria-label="Cambiar idioma"
+  title="Cambiar idioma"
+>
+  <span data-language-label>EN</span>
+</button>
+
+<style>
+  #languageToggle {
+    border: 0;
+    background: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const supportedLanguages = ["es", "en"];
+    const savedLanguage = localStorage.getItem("language");
+    const browserLanguage = navigator.language.toLowerCase().startsWith("en")
+      ? "en"
+      : "es";
+    let currentLanguage = supportedLanguages.includes(savedLanguage)
+      ? savedLanguage
+      : browserLanguage;
+
+    const applyLanguage = (language) => {
+      currentLanguage = language;
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-lang-es][data-lang-en]").forEach((element) => {
+        element.textContent = element.dataset[`lang${language === "es" ? "Es" : "En"}`];
+      });
+
+      document.querySelectorAll("[data-language-label]").forEach((element) => {
+        element.textContent = language === "es" ? "EN" : "ES";
+      });
+
+      document.querySelectorAll("[data-language-toggle]").forEach((element) => {
+        element.setAttribute(
+          "aria-label",
+          language === "es" ? "Cambiar a inglés" : "Switch to Spanish",
+        );
+      });
+
+      localStorage.setItem("language", language);
+    };
+
+    applyLanguage(currentLanguage);
+
+    document.getElementById("languageToggle")?.addEventListener("click", () => {
+      applyLanguage(currentLanguage === "es" ? "en" : "es");
+    });
+  })();
+</script>

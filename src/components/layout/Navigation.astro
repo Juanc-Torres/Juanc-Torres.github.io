@@ -133,7 +133,18 @@ const baseClasses = {
                 item.path === Astro.url.pathname ? "page" : undefined
               }
             >
-              {item.name}
+              <span
+                data-lang-es={item.name}
+                data-lang-en={
+                  item.name === "Experiencia"
+                    ? "Experience"
+                    : item.name === "Proyectos"
+                      ? "Projects"
+                      : item.name === "Estudios"
+                        ? "Studies"
+                        : item.name
+                }
+              >{item.name}</span>
             </a>
 
             <div class={baseClasses.dropdownMenu}>
@@ -160,7 +171,18 @@ const baseClasses = {
           aria-label={item.name}
           aria-current={item.path === Astro.url.pathname ? "page" : undefined}
         >
-          {item.name}
+          <span
+            data-lang-es={item.name}
+            data-lang-en={
+              item.name === "Experiencia"
+                ? "Experience"
+                : item.name === "Proyectos"
+                  ? "Projects"
+                  : item.name === "Estudios"
+                    ? "Studies"
+                    : item.name
+            }
+          >{item.name}</span>
         </a>
       );
     })
@@ -174,7 +196,7 @@ const baseClasses = {
     class={baseClasses.link}
     aria-label="Abrir mi CV"
   >
-    Mi CV
+    <span data-lang-es="Mi CV" data-lang-en="My CV">Mi CV</span>
   </a>
 
   <div
