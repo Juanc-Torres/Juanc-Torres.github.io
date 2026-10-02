@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Carlos Torres | Full Stack Developer</title>
+<style>
+  :root{
+    --bg:#211f1f;
+    --panel:#282525;
+    --panel2:#242222;
+    --text:#f3f3f3;
+    --muted:#c4c0c0;
+    --green:#18d79a;
+    --green2:#00b879;
+    --line:rgba(24,215,154,.34);
+    --glow:rgba(24,215,154,.20);
+  }
+
+  *{box-sizing:border-box}
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:#171616;
+    color:var(--text);
+    font-family:Arial, Helvetica, sans-serif;
+  }
+
+  body{
+    min-height:100vh;
+    padding:28px;
+  }
+
+  .cv{
+    position:relative;
+    width:min(100%, 1100px);
+    margin:0 auto;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 2% 10%, rgba(24,215,154,.18), transparent 22%),
+      radial-gradient(circle at 98% 48%, rgba(24,215,154,.14), transparent 20%),
+      radial-gradient(circle at 4% 92%, rgba(24,215,154,.12), transparent 18%),
+      linear-gradient(145deg,#292626 0%,#211f1f 52%,#252222 100%);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:
+      0 0 0 1px rgba(24,215,154,.06) inset,
+      0 0 45px rgba(24,215,154,.08),
+      0 25px 70px rgba(0,0,0,.42);
+    padding:34px 42px 30px;
+  }
+
+  .cv:before,
+  .cv:after{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    filter:blur(70px);
+    pointer-events:none;
+    opacity:.38;
+  }
+
+  .cv:before{
+    left:-150px;
+    top:130px;
+    background:var(--green);
+  }
+
+  .cv:after{
+    right:-160px;
+    bottom:80px;
+    background:#00b878;
+  }
+
+  .content{position:relative;z-index:2}
+
+  header{
+    display:grid;
+    grid-template-columns:1fr 180px 245px;
+    gap:25px;
+    align-items:center;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .name{
+    margin:0;
+    font-size:35px;
+    line-height:1;
+    letter-spacing:.5px;
+    font-weight:800;
+  }
+
+  .role{
+    margin-top:8px;
+    color:var(--green);
+    font-size:18px;
+    font-weight:800;
+  }
+
+  .headline{
+    margin-top:9px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.45;
+  }
+
+  .photo-wrap{
+    display:flex;
+    justify-content:center;
+  }
+
+  .photo{
+    width:145px;
+    height:145px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--green);
+    box-shadow:
+      0 0 0 5px rgba(24,215,154,.07),
+      0 0 28px rgba(24,215,154,.35);
+    background:#ddd;
+  }
+
+  .contact{
+    font-size:12px;
+    line-height:1.9;
+    text-align:left;
+  }
+
+  .contact strong,
+  .contact a{
+    color:var(--green);
+  }
+
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
+
+  .contact-row{
+    display:flex;
+    gap:7px;
+    align-items:center;
+    white-space:nowrap;
+  }
+
+  .section{
+    margin-top:17px;
+  }
+
+  .section-title{
+    margin:0 0 8px;
+    font-size:18px;
+    line-height:1;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    color:#fff;
+    font-weight:800;
+  }
+
+  .section-title:after{
+    content:"";
+    display:block;
+    width:100%;
+    height:1px;
+    margin-top:6px;
+    background:linear-gradient(90deg,var(--green),rgba(24,215,154,.05));
+  }
+
+  .job{
+    margin-bottom:12px;
+  }
+
+  .job-head{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:baseline;
+  }
+
+  .job-title{
+    color:var(--green);
+    font-weight:800;
+    font-size:13px;
+  }
+
+  .date{
+    color:#d2cece;
+    font-size:11px;
+    white-space:nowrap;
+    font-style:italic;
+  }
+
+  .company{
+    color:#ddd8d8;
+    font-size:11px;
+    margin-top:2px;
+  }
+
+  ul{
+    margin:5px 0 0 17px;
+    padding:0;
+  }
+
+  li{
+    color:#d3cece;
+    font-size:11.5px;
+    line-height:1.45;
+    margin:1px 0;
+  }
+
+  li strong,
+  .tech strong{
+    color:var(--green);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+
+  .tech{
+    color:#d3cece;
+    font-size:11.5px;
+    line-height:1.52;
+  }
+
+  .tech-row{margin-bottom:4px}
+
+  .project-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 30px;
+  }
+
+  .project{
+    color:#d3cece;
+    font-size:11.5px;
+    line-height:1.45;
+  }
+
+  .project-title{
+    color:var(--green);
+    font-weight:800;
+    margin-bottom:2px;
+    font-size:12px;
+  }
+
+  .education-row,
+  .cert-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:3px 0;
+    color:#d3cece;
+    font-size:11.5px;
+  }
+
+  .education-row strong,
+  .cert-row strong{
+    color:var(--green);
+  }
+
+  .bottom-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+  }
+
+  .pill{
+    display:inline-block;
+    border:1px solid rgba(24,215,154,.32);
+    background:rgba(24,215,154,.055);
+    border-radius:999px;
+    padding:3px 8px;
+    margin:2px 4px 2px 0;
+    color:#e9e5e5;
+    font-size:10.5px;
+  }
+
+  .footer-line{
+    margin-top:15px;
+    padding-top:10px;
+    border-top:1px solid rgba(24,215,154,.25);
+    text-align:center;
+    color:#8f8b8b;
+    font-size:9px;
+  }
+
+  @media(max-width:850px){
+    body{padding:10px}
+    .cv{padding:24px 22px}
+    header{grid-template-columns:1fr 150px}
+    .contact{grid-column:1 / -1}
+    .project-grid,.grid,.bottom-grid{grid-template-columns:1fr}
+  }
+
+  @media print{
+    @page{size:A4;margin:0}
+    body{padding:0;background:#171616}
+    .cv{
+      width:210mm;
+      min-height:297mm;
+      margin:0;
+      box-shadow:none;
+      border:none;
+      padding:15mm 14mm;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="cv">
+<div class="content">
+
+<header>
+  <div>
+    <h1 class="name">JUAN CARLOS TORRES</h1>
+    <div class="role">FULL STACK DEVELOPER | DATA | REACT · NODE.JS · PYTHON · SQL</div>
+    <div class="headline">
+      Full Stack Developer con experiencia en React, Node.js, Python y SQL.
+      Desarrollo aplicaciones web, APIs REST y soluciones orientadas a datos,
+      con experiencia en PostgreSQL, PySpark, AWS y metodologías ágiles.
+    </div>
+  </div>
+
+  <div class="photo-wrap">
+    <img class="photo" src="/images/jc.jpg" alt="Juan Carlos Torres">
+  </div>
+
+  <div class="contact">
+    <div class="contact-row">✉ <strong>jc.torres.rodriguez00@gmail.com</strong></div>
+    <div class="contact-row">☎ <strong>638 747 972</strong></div>
+    <div class="contact-row">📍 Cádiz, Andalucía</div>
+    <div class="contact-row">in <a href="https://www.linkedin.com/in/jc-torres-rodriguez/">LinkedIn</a></div>
+    <div class="contact-row">⌂ <a href="https://juanc-torres.github.io/">Portfolio</a></div>
+    <div class="contact-row">◉ <a href="https://github.com/Juanc-Torres">GitHub</a></div>
+    <div class="contact-row"><strong>Español</strong> · Nativo</div>
+    <div class="contact-row"><strong>Inglés</strong> · B1 (CEFR) · British Council</div>
+  </div>
+</header>
+
+<section class="section">
+  <h2 class="section-title">Experiencia</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Full Stack Developer &amp; Data Specialist</div>
+      <div class="date">04/26 – 09/26</div>
+    </div>
+    <div class="company">TRIGO Aerospace Defense &amp; Rail · Entorno Airbus · El Puerto de Santa María</div>
+    <ul>
+      <li>Desarrollo de aplicaciones dinámicas para entornos relacionados con Airbus utilizando <strong>React, HTML, CSS y JavaScript</strong>.</li>
+      <li>Análisis y transformación de grandes volúmenes de datos mediante <strong>Python y PySpark</strong>.</li>
+      <li>Gestión de incidencias y consultas en <strong>PostgreSQL</strong> para garantizar la integridad de los datos.</li>
+      <li>Corrección y análisis de errores a partir de tickets técnicos y necesidades del cliente.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Full Stack Developer</div>
+      <div class="date">10/25 – 02/26</div>
+    </div>
+    <div class="company">Brüver · Málaga · Remoto</div>
+    <ul>
+      <li>Diseño y optimización de bases de datos relacionales con <strong>MySQL</strong>.</li>
+      <li>Desarrollo de <strong>APIs REST</strong> con <strong>Node.js</strong> e interfaces web con <strong>React</strong>.</li>
+      <li>Desarrollo bajo metodología <strong>Scrum</strong>, organizando tareas mediante Trello.</li>
+      <li>Gestión de archivos con <strong>Multer</strong> y envío de correos con <strong>Nodemailer</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Especialista informático / Técnico informático</div>
+      <div class="date">03/21 – 09/22</div>
+    </div>
+    <div class="company">DANIELEC COMPONENTES SL · Cádiz</div>
+    <ul>
+      <li>Montaje, reparación, mantenimiento y configuración de equipos informáticos.</li>
+      <li>Diagnóstico y resolución de incidencias de hardware y software.</li>
+      <li>Recuperación de datos y archivos perdidos mediante procedimientos de diagnóstico y recuperación.</li>
+      <li>Administración de sistemas y servicios en <strong>Linux y Windows Server</strong>.</li>
+      <li>Montaje y configuración de redes locales, cableado, nodos y sistemas.</li>
+      <li>Instalación y configuración de cámaras con visión artificial.</li>
+      <li>Gestión de sitios y catálogos mediante <strong>PrestaShop, WordPress y CSV</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid">
+    <div>
+      <h2 class="section-title">Habilidades técnicas</h2>
+      <div class="tech">
+        <div class="tech-row"><strong>Frontend:</strong> React, Astro, JavaScript, TypeScript, HTML5, CSS3, Sass, Tailwind CSS, Bootstrap, Vite.</div>
+        <div class="tech-row"><strong>Backend:</strong> Node.js, Express, Python, REST APIs.</div>
+        <div class="tech-row"><strong>Bases de datos:</strong> MySQL, PostgreSQL, SQL.</div>
+        <div class="tech-row"><strong>Cloud:</strong> AWS, Vercel, Docker, GitHub Actions.</div>
+      </div>
+    </div>
+    <div>
+      <h2 class="section-title">Data &amp; IA</h2>
+      <div class="tech">
+        <div class="tech-row"><strong>Data &amp; IA:</strong> PySpark, Power BI, OpenCV, YOLO, PyTorch.</div>
+        <div class="tech-row"><strong>Web &amp; SEO:</strong> SEO técnico, Sitemap, Google Search Console, Schema.org.</div>
+        <div class="tech-row"><strong>Sistemas:</strong> Linux, Windows Server, redes, hardware y soporte técnico.</div>
+        <div class="tech-row"><strong>Herramientas:</strong> Git, GitHub, Postman, Figma, Scrum, Trello.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Proyectos destacados</h2>
+  <div class="project-grid">
+    <div class="project">
+      <div class="project-title">Gun Detector | Computer Vision</div>
+      Detección de personas y armas en tiempo real mediante <strong>Python, OpenCV, YOLO y PyTorch</strong>, incluyendo dataset, etiquetado y entrenamiento.
+    </div>
+    <div class="project">
+      <div class="project-title">Brüver | Full Stack</div>
+      Aplicación web con <strong>React, Node.js, Express, MySQL y APIs REST</strong> para gestión de citas.
+    </div>
+    <div class="project">
+      <div class="project-title">Fiscal IA | Automatización</div>
+      Prototipo de asistente de voz para gestión de citas mediante <strong>React, TypeScript, Node.js y Python</strong>.
+    </div>
+    <div class="project">
+      <div class="project-title">Webs profesionales</div>
+      Desarrollo de sitios con <strong>Astro, React, Tailwind CSS, SEO técnico</strong> y despliegue en Vercel.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Educación</h2>
+  <div class="education-row"><strong>Full Stack Developer Bootcamp · SocraTech</strong><span>09/25 – 02/26</span></div>
+  <div class="education-row"><strong>FPII Desarrollo de Aplicaciones Multiplataforma (DAM) · IES Rafael Alberti</strong><span>09/22 – 06/23 · 1.º curso</span></div>
+  <div class="education-row"><strong>FPI Sistemas Microinformáticos y Redes (SMR) · IES Rafael Alberti</strong><span>09/19 – 06/21 · Nota: 8,4</span></div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Certificaciones</h2>
+  <div class="cert-row"><strong>AWS Cloud Practitioner Exam CLF-C01</strong><span>Udemy · 2026</span></div>
+  <div class="cert-row"><strong>Generative AI: Prompt Engineering</strong><span>IBM · 2026</span></div>
+  <div class="cert-row"><strong>Power BI</strong><span>Santander Open Academy · 2026</span></div>
+  <div class="cert-row"><strong>Pentesting en Web</strong><span>Udemy · 2026</span></div>
+  <div class="cert-row"><strong>MOOC Ciberseguridad</strong><span>Universidad de Málaga · 2025</span></div>
+  <div class="cert-row"><strong>GitHub Foundations</strong><span>Udemy · 2025</span></div>
+</section>
+
+<div class="footer-line">JUAN CARLOS TORRES · FULL STACK DEVELOPER · DATA · REACT · NODE.JS · PYTHON · SQL</div>
+
+</div>
+</div>
+</body>
+</html>
